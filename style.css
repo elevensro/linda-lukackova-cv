@@ -40,3 +40,27 @@ body{overflow-x:clip}
 .credential-note{font-size:14px;margin-top:5px;line-height:1.6}
 .earlier{margin-top:40px}
 @media(max-width:759px){.stacked>section+section{margin-top:30px}.role-summary{font-size:16px}.earlier{margin-top:36px}}
+
+/* Mobile identity starts on the same line as PROFILE. Desktop keeps its CV layout. */
+h1{display:flex;justify-content:center;position:relative}.first-name{text-align:left}.portrait{flex-shrink:0;position:relative;z-index:1}
+@media(max-width:759px){.identity{margin-left:23px;text-align:left}h1{display:flex;justify-content:flex-start;gap:12px;font-size:clamp(16px,4.1vw,30px)}.first-name{text-align:left}.profession,.tagline{text-align:left}.portrait{flex:0 0 90px}}
+@media(max-width:759px){.block>.icon{margin-left:23px;margin-right:0}}
+@media(max-width:370px){.block>.icon{margin-left:17px}}
+@media(max-width:480px){h1{gap:8px}.portrait{flex-basis:64px;width:64px;height:64px}}
+@media(max-width:370px){.identity{margin-left:17px}h1{font-size:14px}.portrait{flex-basis:56px;width:56px;height:56px}}
+.contact-form-section{margin-top:64px;border-top:1px solid #d8d8d8;padding-top:35px}.contact-form-section h2{margin-bottom:12px}.form-intro{margin-bottom:25px;color:#555}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.full-width{grid-column:1/-1}form label{display:block;font-size:14px;font-weight:600}form label>span{font-weight:400;color:#555}input,textarea,button{font:inherit}form input:not([type=checkbox]),textarea{display:block;width:100%;margin-top:8px;padding:12px 14px;border:1px solid #bbb;border-radius:3px;color:#171717;background:#fff}textarea{resize:vertical;min-height:140px}input:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #171717;outline-offset:3px}.consent{display:flex;gap:12px;margin:22px 0;font-size:13px;line-height:1.65;font-weight:400}.consent input{flex:0 0 18px;width:18px;height:18px;margin:3px 0;accent-color:#171717}.consent a,.privacy-content a{text-decoration:underline;text-underline-offset:3px}.send-button{display:flex;gap:30px;align-items:center;border:1px solid #171717;border-radius:3px;background:#171717;color:white;padding:12px 20px;cursor:pointer}.send-button:hover{background:#333}.send-button:disabled{opacity:.6;cursor:wait}.form-status{font-size:14px;margin-top:15px}.form-status[data-state=error]{color:#a12626}.form-trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}.site-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;border-top:1px solid #ddd;margin-top:45px;padding-top:25px;font-size:12px;color:#555}.site-footer details{flex:0 0 100%;line-height:1.7}.site-footer summary{cursor:pointer}.privacy-content{padding:15px 0}.privacy-content p+p,.privacy-content h3{margin-top:14px}.privacy-content h3{font-size:14px}.privacy-draft{background:#f4f4f4;padding:12px}
+@media(max-width:759px){.contact-form-section,.site-footer{margin-left:23px}.form-grid{grid-template-columns:1fr}.contact-form-section{margin-top:45px}.form-intro{font-size:15px}}
+@media(max-width:370px){.contact-form-section,.site-footer{margin-left:17px}}
+@media print{.contact-form-section,.site-footer{display:none}}
+
+/* Warm paper with a quiet, finely spaced dot texture. */
+:root{background:#F7F4EE}
+body{background-color:#F7F4EE;background-image:radial-gradient(circle,#E8E1CF 0.55px,transparent 0.8px);background-size:9px 9px}
+.resume{background:transparent}
+.icon [fill="white"]{fill:#F7F4EE}
+h1{font-size:57.2px}
+@media(min-width:760px) and (max-width:970px){h1{font-size:clamp(36.4px,5.85vw,57.2px)}}
+@media(max-width:759px){h1{font-size:clamp(20.8px,5.33vw,39px)}}
+@media(max-width:480px){h1{gap:6px}.portrait{flex-basis:56px;width:56px;height:56px}}
+@media(max-width:370px){h1{font-size:18.2px}.portrait{flex-basis:44px;width:44px;height:44px}}
+@media print{body{background:#fff}.resume{background:#fff}}

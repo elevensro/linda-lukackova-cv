@@ -70,14 +70,14 @@
 }
   </script>
   <!-- End discovery metadata -->
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#F7F4EE">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main class="resume">
   <header class="identity">
-    <h1><span class="first-name">Linda</span><span class="portrait"><img src="assets/portrait.webp" alt="Pencil sketch portrait of Linda Lukackova" width="1254" height="1254"></span><span class="last-name">Lukackova</span></h1>
+    <h1><span class="first-name">Linda</span><span class="last-name">Lukackova</span><span class="portrait"><img src="assets/portrait.webp" alt="Pencil sketch portrait of Linda Lukackova" width="1254" height="1254"></span></h1>
     <p class="profession">Business Consultant</p>
     <p class="tagline">Founder &amp; Business Leader</p>
   </header>
@@ -131,7 +131,38 @@
       <section class="right"><h2>Interests</h2><ul><li>Web Design &amp; Content</li><li>Social Media &amp; PR Graphics</li><li>Visual Identity</li><li>SEO &amp; robots.txt</li></ul></section>
     </div>
   </section>
+  <section class="contact-form-section" id="get-in-touch" aria-labelledby="form-heading">
+    <h2 id="form-heading">Get in touch</h2>
+    <p class="form-intro">Have an opportunity, a project or a question? Let’s talk.</p>
+    <form id="contact-form" action="contact.php" method="post">
+      <div class="form-grid">
+        <label>Your name <span>(optional)</span><input name="name" autocomplete="name" maxlength="100"></label>
+        <label>Phone number <span>(required)</span><input name="phone" type="tel" autocomplete="tel" required maxlength="35" placeholder="+421…"></label>
+        <label class="full-width">Email address <span>(required)</span><input name="email" type="email" autocomplete="email" required maxlength="254"></label>
+        <label class="full-width">Your message <span>(required)</span><textarea name="message" rows="5" required minlength="10" maxlength="5000" placeholder="Tell me what you have in mind…"></textarea></label>
+      </div>
+      <div class="form-trap" aria-hidden="true"><label>Leave this field empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I consent to the processing of my contact details and message to respond to my enquiry, as described in the <a href="#privacy">Privacy notice</a>. I can withdraw my consent at any time.</span></label>
+      <button class="send-button" type="submit">Send message <span aria-hidden="true">↗</span></button>
+      <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      <noscript><p>Please contact <a href="mailto:linda@e11.consulting">linda@e11.consulting</a> directly. This form requires JavaScript for spam protection.</p></noscript>
+    </form>
+  </section>
+  <footer class="site-footer">
+    <a href="#privacy">Privacy &amp; cookies</a><span>© Linda Lukackova</span>
+    <details id="privacy">
+      <summary>Privacy &amp; cookies</summary>
+      <div class="privacy-content">
+        <h3>Your enquiry</h3><p>Controller: eleven s.r.o., Labutia 4087/5, 851 07 Bratislava – Petržalka, Slovakia. Company ID (IČO): 52103099. Contact: <a href="mailto:linda@e11.consulting">linda@e11.consulting</a>.</p>
+        <p>With your consent under Article 6(1)(a) GDPR, your phone number, email address, message and optional name are used to respond to your enquiry. Phone and email are required to use this form; you can also contact me directly by email. Your consent covers this enquiry only, with no marketing subscription.</p>
+        <p>Enquiries are retained for up to six months after they are resolved, unless a subsequent business relationship requires a separate retention period. Messages are delivered to linda@e11.consulting. Websupport provides hosting and Google provides the email service. Their authorised service providers may process data where necessary to provide these services. Where processing involves transfers outside the EEA, applicable transfer safeguards are required, such as the European Commission’s standard contractual clauses.</p>
+        <h3>Your rights</h3><p>You may request access, correction, erasure, restriction or portability where applicable, or withdraw your consent by writing to linda@e11.consulting. Withdrawal does not affect earlier lawful processing. You can complain to the <a href="https://dataprotection.gov.sk/">Slovak Office for Personal Data Protection</a>. Enquiries are not used for automated decision-making.</p>
+        <h3>Cookies &amp; security</h3><p>No advertising or analytics cookies are used. Interacting with the contact form starts an essential session cookie (e11_contact), which expires when the browser session ends. It protects the form against forged requests and spam. A daily hash of your IP address and short-lived request counters are used for abuse prevention, on the basis of legitimate interests in keeping this service secure. These counters are used for at most 24 hours and removed on the next form submission; enquiry content is not stored in them. Hosting and email providers may retain their own operational logs under their policies.</p>
+      </div>
+    </details>
+  </footer>
 </main>
 <script src="script.js"></script>
+<script src="contact.js"></script>
 </body>
 </html>

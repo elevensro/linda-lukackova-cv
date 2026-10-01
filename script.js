@@ -3,6 +3,16 @@
   if (motion.matches) return;
 
   const portrait = document.querySelector('.portrait');
+  const surname = document.querySelector('.last-name');
+  const firstName = document.querySelector('.first-name');
+  let portraitMoves = [];
+  function positionPortrait() {
+    const gap = parseFloat(getComputedStyle(portrait.parentElement).gap) || 0;
+    portrait.style.transform = `translateX(-${firstName.offsetWidth + surname.offsetWidth + 2 * gap}px)`;
+    firstName.style.transform = `translateX(${portrait.offsetWidth + gap}px)`;
+    surname.style.transform = `translateX(${portrait.offsetWidth + gap}px)`;
+  }
+  positionPortrait();
   const photo = portrait.querySelector('img');
   const showPortrait = () => {
     if (!motion.matches) portrait.classList.add('portrait-enter');
@@ -46,6 +56,10 @@
   const finish = () => {
     skip = true;
     portrait.classList.remove('portrait-enter');
+    portraitMoves.forEach(animation => animation.cancel());
+    portrait.style.transform = '';
+    firstName.style.transform = '';
+    surname.style.transform = '';
     sequences.flat().forEach((span) => span.classList.add('is-typed'));
     sections.forEach(reveal);
     observer?.disconnect();
@@ -55,14 +69,26 @@
   const pause = (duration) => new Promise((resolve) => setTimeout(resolve, duration));
   async function type() {
     await Promise.race([document.fonts.ready, pause(800)]);
+    positionPortrait();
     await pause(180);
-    for (const characters of sequences) {
+    for (const [index, characters] of sequences.entries()) {
       for (const character of characters) {
         if (skip) return;
         character.classList.add('is-typed');
         await pause(character.textContent === ' ' ? 30 : 55);
       }
       await pause(170);
+      if (index === 1 && !skip) {
+        portraitMoves = [portrait, firstName, surname].map(element => element.animate(
+          [{transform: element.style.transform}, {transform: 'translateX(0)'}],
+          {duration: 1100, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards'}
+        ));
+        await Promise.all(portraitMoves.map(animation => animation.finished.catch(() => {})));
+        portrait.style.transform = '';
+        firstName.style.transform = '';
+        surname.style.transform = '';
+        portraitMoves.forEach(animation => animation.cancel());
+      }
     }
   }
   type().catch(finish);

@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const endpoint = 'http://127.0.0.1:8089/contact.php';
+const valid = {name: 'Local test', phone: '+421 900 123 456', email: 'test@example.com', message: 'Local integration test. No email is sent.', consent: 'yes', website: ''};
+async function request(fields = {}, expected = 400) {
+  const ready = await fetch(endpoint);
+  const cookie = ready.headers.get('set-cookie').split(';')[0];
+  assert.match(ready.headers.get('set-cookie'), /HttpOnly/i);
+  assert.match(ready.headers.get('set-cookie'), /SameSite=Strict/i);
+  const challenge = await ready.json();
+  let nonce = 0;
+  while (!createHash('sha256').update(`${challenge.challenge}:${nonce}`).digest('hex').startsWith('000')) nonce++;
+  await new Promise(resolve => setTimeout(resolve, 2100));
+  const body = new URLSearchParams({...valid, token: challenge.token, nonce: String(nonce), ...fields});
+  const response = await fetch(endpoint, {method: 'POST', headers: {cookie, origin: 'http://127.0.0.1:8089'}, body});
+  assert.equal(response.status, expected, await response.text());
+  return {body, cookie};
+}
+await request({email: 'not-an-email'});
+await request({phone: '123'});
+await request({consent: ''});
+await request({website: 'bot'});
+await request({email: 'test@example.com\r\nBcc: victim@example.com'});
+await request({nonce: 'invalid'}, 403);
+await request({token: 'forged'}, 403);
+const successful = await request({}, 200);
+const replay = await fetch(endpoint, {method:'POST',headers:{cookie:successful.cookie},body:successful.body});
+assert.equal(replay.status,403);
+const crossSite = await fetch(endpoint,{headers:{origin:'https://attacker.example'}});
+assert.equal(crossSite.status,403);
+const oversized = await fetch(endpoint,{method:'POST',body:'x'.repeat(16001)});
+assert.equal(oversized.status,413);
+console.log('Passed: required data, consent, honeypot, header injection, proof, CSRF, replay, origin, body limit, session flags and mocked mail submission.');

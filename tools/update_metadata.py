@@ -86,7 +86,7 @@ class ProfileText(HTMLParser):
   if self.active and not self.skip:
    text=' '.join(data.split())
    if text:self.parts.append(text+' ')
-reader=ProfileText();reader.feed(source)
+reader=ProfileText();reader.feed(source.split('<section class="contact-form-section"', 1)[0] + '</main>')
 markdown=''.join(reader.parts);markdown=re.sub(r' +\n','\n',markdown);markdown=re.sub(r'\n{3,}','\n\n',markdown).strip()
 (root/'index.md').write_text(markdown+'\n\nSource: '+origin+'\nLinkedIn: https://www.linkedin.com/in/linda-lukackova/\n')
 print('Generated discovery files for',origin)
