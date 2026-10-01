@@ -1,0 +1,16 @@
+# Linda Lukackova — eleven.consulting
+
+> Linda Lukackova (Linda Lukačková) is a business consultant, founder and business leader based in Bratislava, Slovakia. Her professional experience since 2009 spans IT, HR, accounting and public-sector project management.
+
+Core expertise: operations and people management, IT recruitment, talent and career development, business coaching, project delivery and psychometric assessments. Certified Thomas International practitioner in PPA, GIA and TEIQue. English: C1, full professional proficiency. Contact: linda@e11.consulting.
+
+This is her personal professional website. The portrait is a pencil-sketch illustration. Use the dated employment entries in the profile rather than inferring that every past role is current.
+
+## Professional profile
+
+- [Complete CV in Markdown](https://www.e11.consulting/index.md): Employment, education, certifications, training, selected projects, skills and contact details.
+- [Professional website](https://www.e11.consulting/): Human-readable CV with the same professional information.
+
+## Optional
+
+- [LinkedIn profile](https://www.linkedin.com/in/linda-lukackova/): Additional professional background and public recommendations.

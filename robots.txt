@@ -1,0 +1,8 @@
+# Public professional profile: Linda Lukackova / Linda Lukačková.
+# Business consultant and coach based in Bratislava, Slovakia.
+# All compliant search and AI crawlers may access the public website.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.e11.consulting/sitemap.xml
+# Machine-readable profile: https://www.e11.consulting/llms.txt

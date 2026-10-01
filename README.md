@@ -1,6 +1,6 @@
 # Linda Lukackova — static CV website
 
-A responsive HTML/CSS adaptation of the approved CV. Oughter headings, Poppins body text, a circular pencil-sketch portrait, and custom SVG icons. No build step, JavaScript, analytics, or external font requests.
+A responsive HTML/CSS adaptation of the approved CV. Oughter headings, Poppins body text, a circular pencil-sketch portrait, and custom SVG icons. No build step, analytics, or external font requests. A small vanilla JavaScript enhancement types the header and reveals sections once on scroll; reduced-motion preferences are respected.
 
 Open `index.html`, or serve this directory with `python3 -m http.server 8080`.
 
